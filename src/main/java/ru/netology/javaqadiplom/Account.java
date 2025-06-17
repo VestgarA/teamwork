@@ -1,5 +1,4 @@
 package ru.netology.javaqadiplom;
-
 public class Account {
     protected int balance;
     protected int rate;
