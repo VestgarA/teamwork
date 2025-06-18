@@ -2,8 +2,8 @@ package ru.netology.javaqadiplom;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditAccountTest {
 
@@ -19,15 +19,29 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-    @ParameterizedTest
-    @CsvSource({
-            "-200,5000,15,-30",
-            "200,5000,15,0",
-            "0,5000,15,0"
-    })
-    public void PercentTest(int initialBalance, int creditLimit, int rate, int expected) {
-        CreditAccount account = new CreditAccount(initialBalance, creditLimit, rate);
-        int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);
+
+
+    @Test
+    public void yearChange() {
+        CreditAccount creditAccount = new CreditAccount(-200, 5000, 15);
+        int expected = -30;
+        int actual = creditAccount.yearChange();
+        assertEquals (expected, actual);
+    }
+
+    @Test
+    public void yearChange2() {
+        CreditAccount creditAccount = new CreditAccount(200, 5000, 15);
+        int expected = 0;
+        int actual = creditAccount.yearChange();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void yearChange3() {
+        CreditAccount creditAccount = new CreditAccount(0, 5000, 15);
+        int expected = 0;
+        int actual = creditAccount.yearChange();
+        assertEquals(expected, actual);
     }
 }
