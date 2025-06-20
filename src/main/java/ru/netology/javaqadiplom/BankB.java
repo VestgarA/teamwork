@@ -1,6 +1,6 @@
 package ru.netology.javaqadiplom;
 
-public class Bank {
+public class BankB {
 
     /**
      * Операция перевода указанной суммы с одного счёта на другой.
@@ -17,9 +17,23 @@ public class Bank {
         if (amount <= 0) {
             return false;
         }
-        if (from.pay(amount)) {
-            to.add(amount);
-        }
-        return true;
+    //    if (from.pay(amount)) {
+    //        to.add(amount);
+    //    }
+    //    return true;
+  //  }
+
+    boolean successfulPayment = from.pay(amount);
+        if (!successfulPayment) {
+        return false;
     }
+
+    boolean successfulReplenishment = to.add(amount);
+        if (!successfulReplenishment) {
+        from.add(amount);
+        return false;
+    }
+
+        return true;
+}
 }

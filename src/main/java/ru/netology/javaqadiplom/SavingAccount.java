@@ -69,13 +69,28 @@ public class SavingAccount extends Account {
      * @param amount - сумма покупки
      * @return true если операция прошла успешно, false иначе.
      */
+
+   // @Override
+  //  public boolean pay(int amount) {
+   //     if (amount <= 0) {
+   //         return false;
+    //    }
+    //    balance = balance - amount;
+   //     if (balance > minBalance) {
+  //          return true;
+   //     } else {
+   //         return false;
+  //      }
+  //  }
+
     @Override
     public boolean pay(int amount) {
         if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > minBalance) {
+
+        if (balance - amount >= minBalance) {
+            balance = balance - amount;
             return true;
         } else {
             return false;
@@ -95,13 +110,27 @@ public class SavingAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      * @return
      */
+
+  //  @Override
+ //   public boolean add(int amount) {
+  //      if (amount <= 0) {
+  //          return false;
+   //     }
+   //     if (balance + amount < maxBalance) {
+   //         balance = amount;
+  //          return true;
+  //      } else {
+ //           return false;
+ //       }
+//    }
+
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount < maxBalance) {
-            balance = amount;
+        if (balance + amount <= maxBalance) {
+            balance = amount + balance;
             return true;
         } else {
             return false;
