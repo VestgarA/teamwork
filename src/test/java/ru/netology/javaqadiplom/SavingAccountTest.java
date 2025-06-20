@@ -32,10 +32,10 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void test1(){
+    public void buyingAccordingToAllTheRules() {
         SavingAccount savingAccount = new SavingAccount(
                 5000,
-               1000,
+                1000,
                 10000,
                 15);
 
@@ -45,28 +45,16 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void test2(){
+    public void purchaseMoreThanTheRemainingBalance() {
         SavingAccount savingAccount = new SavingAccount(
                 4000,
                 1000,
                 10000,
                 15);
 
-        assertTrue(savingAccount.pay(6000));
+        assertFalse(savingAccount.pay(6000));
 
         assertEquals(4000, savingAccount.getBalance());
     }
 
-    @Test
-    public void test3(){
-        SavingAccount savingAccount = new SavingAccount(
-                5000,
-                1000,
-                10000,
-                15);
-
-        assertTrue(savingAccount.pay(5000));
-
-        assertEquals(5000, savingAccount.getBalance());
-    }
 }

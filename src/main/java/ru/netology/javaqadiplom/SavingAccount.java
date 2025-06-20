@@ -74,12 +74,16 @@ public class SavingAccount extends Account {
             return false;
         }
         balance = balance - amount;
-        if (balance > minBalance) {
+       if (balance > minBalance) {
+
             return true;
         } else {
             return false;
-        }
+
     }
+    }
+
+
 
     /**
      * Операция пополнения карты на указанную сумму.
