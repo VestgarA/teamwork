@@ -22,6 +22,48 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void whenDepositingTheAmountWillBeMoreThanTheMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                6_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(5_000);
+
+        Assertions.assertEquals(6_000, account.getBalance());
+    }
+
+    @Test
+    public void replenishmentForANegativeAmount() {
+        SavingAccount account = new SavingAccount(
+                6_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(-1_000);
+
+        Assertions.assertEquals(6_000, account.getBalance());
+    }
+
+    @Test
+    public void replenishmentToTheMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                6_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(4_000);
+
+        Assertions.assertEquals(10_000, account.getBalance());
+    }
+
+    @Test
     public void constructorInvalidParameters() {
         assertThrows(IllegalArgumentException.class, () -> new SavingAccount(3000, 1000, 10000, -15));
         assertThrows(IllegalArgumentException.class, () -> new SavingAccount(2000, 5000, 3000, 15));
@@ -39,7 +81,8 @@ public class SavingAccountTest {
                 10000,
                 15);
 
-        assertTrue(savingAccount.pay(2000));
+        savingAccount.pay(2000);
+
 
         assertEquals(5000 - 2000, savingAccount.getBalance());
     }
@@ -52,9 +95,74 @@ public class SavingAccountTest {
                 10000,
                 15);
 
-        assertFalse(savingAccount.pay(6000));
+        savingAccount.pay(6000);
 
         assertEquals(4000, savingAccount.getBalance());
+    }
+
+    @Test
+    public void purchaseEqualToTheBalance() {
+        SavingAccount savingAccount = new SavingAccount(
+                5000,
+                1000,
+                10000,
+                15);
+
+        savingAccount.pay(5000);
+
+        assertEquals(5000, savingAccount.getBalance());
+    }
+
+    @Test
+    public void purchaseMoreThanTheMinBalance() {
+        SavingAccount savingAccount = new SavingAccount(
+                5000,
+                1000,
+                10000,
+                15);
+
+        savingAccount.pay(4500);
+
+        assertEquals(5000, savingAccount.getBalance());
+    }
+
+    @Test
+    public void purchaseForANegativeAmount() {
+        SavingAccount savingAccount = new SavingAccount(
+                5000,
+                1000,
+                10000,
+                15);
+
+        savingAccount.pay(-1000);
+
+        assertEquals(5000, savingAccount.getBalance());
+    }
+
+    @Test
+    public void buyingAccordingToAllTheRulesMin() {
+        SavingAccount savingAccount = new SavingAccount(
+                5000,
+                1000,
+                10000,
+                15);
+
+        savingAccount.pay(4000);
+
+
+        assertEquals(1000, savingAccount.getBalance());
+    }
+
+    @Test
+    public void percent() {
+        SavingAccount savingAccount = new SavingAccount(
+                200,
+                1000,
+                5000,
+                15
+        );
+
+        assertEquals(30, savingAccount.yearChange());
     }
 
 }
