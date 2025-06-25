@@ -3,8 +3,6 @@ package ru.netology.javaqadiplom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class CreditAccountTest {
 
     @Test
@@ -20,28 +18,94 @@ public class CreditAccountTest {
         Assertions.assertEquals(3_000, account.getBalance());
     }
 
-
     @Test
-    public void yearChange() {
-        CreditAccount creditAccount = new CreditAccount(-200, 5000, 15);
-        int expected = -30;
-        int actual = creditAccount.yearChange();
-        assertEquals (expected, actual);
+    public void ReplenishmentNegativeAmount() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+
+        account.add(-1_000);
+
+        Assertions.assertEquals(0, account.getBalance());
     }
 
     @Test
-    public void yearChange2() {
-        CreditAccount creditAccount = new CreditAccount(200, 5000, 15);
-        int expected = 0;
-        int actual = creditAccount.yearChange();
-        assertEquals(expected, actual);
+    public void ReplenishmentNull() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5000,
+                15
+        );
+
+        account.add(0);
+
+        Assertions.assertEquals(0, account.getBalance());
     }
 
     @Test
-    public void yearChange3() {
-        CreditAccount creditAccount = new CreditAccount(0, 5000, 15);
-        int expected = 0;
-        int actual = creditAccount.yearChange();
-        assertEquals(expected, actual);
+    public void purchaseWithinLimitsBalance() {
+        CreditAccount account = new CreditAccount(
+                4_000,
+                5_000,
+                15
+        );
+
+        account.pay(1_000);
+
+        Assertions.assertEquals(3_000, account.getBalance());
+    }
+
+    @Test
+    public void PurchaseAboveLimit() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5000,
+                15
+        );
+
+        account.pay(6_000);
+
+        Assertions.assertEquals(0, account.getBalance());
+    }
+
+    @Test
+    public void purchaseWithinCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+        account.pay(1_000);
+
+        account.yearChange();
+        Assertions.assertEquals(-1_000, account.getBalance());
+    }
+
+    @Test
+    public void calculatingInterestNegativeBalance() {
+        CreditAccount account = new CreditAccount(
+                -200,
+                5_000,
+                15
+        );
+
+    //    account.yearChange();
+
+        Assertions.assertEquals(-30, account.yearChange());
+    }
+
+    @Test
+    public void calculatingInterestPositivBalance() {
+        CreditAccount account = new CreditAccount(
+                200,
+                5_000,
+                15
+        );
+
+    //    account.yearChange();
+
+        Assertions.assertEquals(0, account.yearChange());
     }
 }

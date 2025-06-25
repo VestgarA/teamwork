@@ -36,19 +36,36 @@ public class CreditAccount extends Account {
      * @param amount - сумма покупки
      * @return true если операция прошла успешно, false иначе.
      */
+//    @Override
+ //   public boolean pay(int amount) {
+//        if (amount <= 0) {
+//            return false;
+ //       }
+ //       balance = balance - amount;
+ //       if (balance > -creditLimit) {
+  //          balance = -amount;
+  //          return true;
+ //       } else {
+  //          return false;
+ //       }
+ //   }
+
     @Override
     public boolean pay(int amount) {
         if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > -creditLimit) {
-            balance = -amount;
+        if (amount > balance) {
+            return false;
+        }
+        if (balance <= creditLimit) {
+            balance = balance - amount;
             return true;
         } else {
             return false;
         }
     }
+
 
     /**
      * Операция пополнения карты на указанную сумму.
@@ -61,6 +78,7 @@ public class CreditAccount extends Account {
      * @param amount
      * @return
      */
+
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
@@ -69,6 +87,7 @@ public class CreditAccount extends Account {
         balance = amount;
         return true;
     }
+
 
     /**
      * Операция расчёта процентов на отрицательный баланс счёта при условии, что
