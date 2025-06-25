@@ -8,8 +8,9 @@ public class BankB {
      * уменьшиться на эту сумму, а баланс счёта to увеличиться.
      * Если операция прошла неуспешно, балансы обоих счетов никак
      * измениться не должны.
-     * @param from - счёт с которого переводим
-     * @param to - счёт на который переводим
+     *
+     * @param from   - счёт с которого переводим
+     * @param to     - счёт на который переводим
      * @param amount - сумма перевода
      * @return - true если операция прошла успешно, false иначе
      */
@@ -17,23 +18,23 @@ public class BankB {
         if (amount <= 0) {
             return false;
         }
-    //    if (from.pay(amount)) {
-    //        to.add(amount);
-    //    }
-    //    return true;
-  //  }
+        //    if (from.pay(amount)) {
+        //        to.add(amount);
+        //    }
+        //    return true;
+        //  }
 
-    boolean successfulPayment = from.pay(amount);
+        boolean successfulPayment = from.pay(amount);
         if (!successfulPayment) {
-        return false;
-    }
+            return false;
+        }
 
-    boolean successfulReplenishment = to.add(amount);
+        boolean successfulReplenishment = to.add(amount);
         if (!successfulReplenishment) {
-        from.add(amount);
-        return false;
-    }
+            from.add(amount);
+            return false;
+        }
 
         return true;
-}
+    }
 }

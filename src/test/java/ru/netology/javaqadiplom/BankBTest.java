@@ -41,6 +41,7 @@ public class BankBTest {
         assertEquals(7000, from.getBalance());
         assertEquals(500, to.getBalance());
     }
+
     @Test
     public void replenishmentOfANegativeAmount() {
         BankB bankB = new BankB();
@@ -59,7 +60,7 @@ public class BankBTest {
         SavingAccount from = new SavingAccount(3000, 1000, 5000, 15);
         SavingAccount to = new SavingAccount(500, 0, 10000, 10);
 
-        bankB.transfer(from, to,6000 );
+        bankB.transfer(from, to, 6000);
 
         assertEquals(3000, from.getBalance());
         assertEquals(500, to.getBalance());

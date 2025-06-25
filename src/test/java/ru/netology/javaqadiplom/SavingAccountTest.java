@@ -3,7 +3,7 @@ package ru.netology.javaqadiplom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SavingAccountTest {
 
@@ -84,7 +84,7 @@ public class SavingAccountTest {
         savingAccount.pay(2000);
 
 
-        assertEquals(5000 - 2000, savingAccount.getBalance());
+        Assertions.assertEquals(5000 - 2000, savingAccount.getBalance());
     }
 
     @Test
@@ -97,7 +97,7 @@ public class SavingAccountTest {
 
         savingAccount.pay(6000);
 
-        assertEquals(4000, savingAccount.getBalance());
+        Assertions.assertEquals(4000, savingAccount.getBalance());
     }
 
     @Test
@@ -110,7 +110,7 @@ public class SavingAccountTest {
 
         savingAccount.pay(5000);
 
-        assertEquals(5000, savingAccount.getBalance());
+        Assertions.assertEquals(5000, savingAccount.getBalance());
     }
 
     @Test
@@ -123,7 +123,7 @@ public class SavingAccountTest {
 
         savingAccount.pay(4500);
 
-        assertEquals(5000, savingAccount.getBalance());
+        Assertions.assertEquals(5000, savingAccount.getBalance());
     }
 
     @Test
@@ -136,7 +136,7 @@ public class SavingAccountTest {
 
         savingAccount.pay(-1000);
 
-        assertEquals(5000, savingAccount.getBalance());
+        Assertions.assertEquals(5000, savingAccount.getBalance());
     }
 
     @Test
@@ -150,7 +150,7 @@ public class SavingAccountTest {
         savingAccount.pay(4000);
 
 
-        assertEquals(1000, savingAccount.getBalance());
+        Assertions.assertEquals(1000, savingAccount.getBalance());
     }
 
     @Test
@@ -162,7 +162,7 @@ public class SavingAccountTest {
                 15
         );
 
-        assertEquals(30, savingAccount.yearChange());
+        Assertions.assertEquals(30, savingAccount.yearChange());
     }
 
 }

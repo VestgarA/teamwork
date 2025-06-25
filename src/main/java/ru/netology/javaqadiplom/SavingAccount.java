@@ -70,27 +70,13 @@ public class SavingAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      */
 
-   // @Override
-  //  public boolean pay(int amount) {
-   //     if (amount <= 0) {
-   //         return false;
-    //    }
-    //    balance = balance - amount;
-   //     if (balance > minBalance) {
-  //          return true;
-   //     } else {
-   //         return false;
-  //      }
-  //  }
-
     @Override
     public boolean pay(int amount) {
         if (amount <= 0) {
             return false;
         }
-
-        if (balance - amount >= minBalance) {
-            balance = balance - amount;
+        balance = balance - amount;
+        if (balance > minBalance) {
             return true;
         } else {
             return false;
@@ -111,31 +97,19 @@ public class SavingAccount extends Account {
      * @return
      */
 
-  //  @Override
- //   public boolean add(int amount) {
-  //      if (amount <= 0) {
-  //          return false;
-   //     }
-   //     if (balance + amount < maxBalance) {
-   //         balance = amount;
-  //          return true;
-  //      } else {
- //           return false;
- //       }
-//    }
-
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount <= maxBalance) {
-            balance = amount + balance;
+        if (balance + amount < maxBalance) {
+            balance = amount;
             return true;
         } else {
             return false;
         }
     }
+
 
     /**
      * Операция расчёта процентов на остаток счёта при условии, что
