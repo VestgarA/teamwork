@@ -1,7 +1,6 @@
 package ru.netology.javaqadiplom;
 
 public class BankB {
-
     /**
      * Операция перевода указанной суммы с одного счёта на другой.
      * Если операция прошла успешно, то баланс счёта from должен
@@ -18,23 +17,22 @@ public class BankB {
         if (amount <= 0) {
             return false;
         }
-        //    if (from.pay(amount)) {
-        //        to.add(amount);
-        //    }
-        //    return true;
-        //  }
 
-        boolean successfulPayment = from.pay(amount);
-        if (!successfulPayment) {
+        boolean paySuccess = from.pay(amount);
+        if (!paySuccess) {
             return false;
         }
 
-        boolean successfulReplenishment = to.add(amount);
-        if (!successfulReplenishment) {
+        boolean addSuccess = to.add(amount);
+        if (!addSuccess) {
             from.add(amount);
             return false;
         }
 
-        return true;
-    }
+        return true;}
+
+
+
+
+
 }
