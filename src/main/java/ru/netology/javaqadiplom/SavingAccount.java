@@ -75,13 +75,23 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = balance - amount;
-        if (balance > minBalance) {
-            return true;
+        if (balance - amount >= minBalance) {
+            balance = balance - amount;
+            return false;
         } else {
             return false;
         }
     }
+/*        if (amount <= 0) {
+            return false;
+        }
+        if (balance > minBalance) {
+            balance = balance - amount;
+            return false;
+        } else {
+            return false;
+        }
+    }*/
 
 
     /**
@@ -102,8 +112,8 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount < maxBalance) {
-            balance = amount;
+        if (balance + amount <= maxBalance) {
+            balance = balance + amount;
             return true;
         } else {
             return false;
