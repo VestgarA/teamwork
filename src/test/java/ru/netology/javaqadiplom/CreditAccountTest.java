@@ -17,7 +17,6 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-
     @Test
     public void ReplenishmentNegativeAmount() {
         CreditAccount account = new CreditAccount(
@@ -91,7 +90,7 @@ public class CreditAccountTest {
                 15
         );
 
-    //    account.yearChange();
+     //   account.yearChange();
 
         Assertions.assertEquals(-30, account.yearChange());
     }
@@ -104,7 +103,7 @@ public class CreditAccountTest {
                 15
         );
 
-    //    account.yearChange();
+     //   account.yearChange();
 
         Assertions.assertEquals(0, account.yearChange());
     }
