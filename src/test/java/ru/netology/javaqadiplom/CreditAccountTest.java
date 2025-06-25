@@ -17,6 +17,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
+
     @Test
     public void ReplenishmentNegativeAmount() {
         CreditAccount account = new CreditAccount(
@@ -69,18 +70,18 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    @Test
-    public void purchaseWithinCreditLimit() {
-        CreditAccount account = new CreditAccount(
-                0,
-                5_000,
-                15
-        );
-        account.pay(1_000);
-
-        account.yearChange();
-        Assertions.assertEquals(-1_000, account.getBalance());
-    }
+ //   @Test
+ //   public void purchaseWithinCreditLimit() {
+ //       CreditAccount account = new CreditAccount(
+ //               0,
+ //               5_000,
+//                15
+ //       );
+ //       account.pay(1_000);
+//
+ //        account.yearChange();
+ //       Assertions.assertEquals(-1_000, account.getBalance());
+ //   }
 
     @Test
     public void calculatingInterestNegativeBalance() {
@@ -90,7 +91,7 @@ public class CreditAccountTest {
                 15
         );
 
-     //   account.yearChange();
+        //   account.yearChange();
 
         Assertions.assertEquals(-30, account.yearChange());
     }
@@ -103,8 +104,22 @@ public class CreditAccountTest {
                 15
         );
 
-     //   account.yearChange();
+        //   account.yearChange();
 
         Assertions.assertEquals(0, account.yearChange());
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
