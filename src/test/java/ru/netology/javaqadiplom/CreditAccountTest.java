@@ -75,10 +75,10 @@ public class CreditAccountTest {
     //       CreditAccount account = new CreditAccount(
     //               0,
     //               5_000,
-//                15
+    //               15
     //       );
     //       account.pay(1_000);
-//
+    //
     //        account.yearChange();
     //       Assertions.assertEquals(-1_000, account.getBalance());
     //   }
@@ -91,8 +91,6 @@ public class CreditAccountTest {
                 15
         );
 
-        //   account.yearChange();
-
         Assertions.assertEquals(-30, account.yearChange());
     }
 
@@ -103,8 +101,6 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
-
-        //   account.yearChange();
 
         Assertions.assertEquals(0, account.yearChange());
     }
