@@ -70,19 +70,6 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    //   @Test
-    //   public void purchaseWithinCreditLimit() {
-    //       CreditAccount account = new CreditAccount(
-    //               0,
-    //               5_000,
-    //               15
-    //       );
-    //       account.pay(1_000);
-    //
-    //        account.yearChange();
-    //       Assertions.assertEquals(-1_000, account.getBalance());
-    //   }
-
     @Test
     public void calculatingInterestNegativeBalance() {
         CreditAccount account = new CreditAccount(
